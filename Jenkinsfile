@@ -15,6 +15,11 @@ pipeline {
             }
         }
 
+	stage('OWASP Dependency Check') {
+		steps {
+			dependencyCheck additionalArguments: '--format HTML --formal XML', odcInstallation: 'ODC'
+		}
+	}
 	stage('Test') {
             steps {
                 sh './jenkins/scripts/test.sh'
@@ -26,7 +31,7 @@ pipeline {
                 input message: 'Finished using the web site? (Click "Proceed" to continue)' 
                 sh './jenkins/scripts/kill.sh' 
             
-	}
+		}
         }
     }
 }
