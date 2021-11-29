@@ -17,7 +17,8 @@ pipeline {
 
 	stage('OWASP Dependency Check') {
 		steps {
-			dependencyCheck additionalArguments: '--format HTML --formal XML', odcInstallation: 'ODC'
+
+			dependencyCheck additionalArguments: '--format HTML --format XML', odcInstallation: 'ODC'
 		}
 	}
 	stage('Test') {
