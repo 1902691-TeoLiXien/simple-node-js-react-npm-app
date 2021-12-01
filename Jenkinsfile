@@ -1,8 +1,7 @@
 pipeline {
 	agent any
 	stages {
-		
-		 ('OWASP DependencyCheck') {
+		 stage('OWASP DependencyCheck') {
 			steps {
 				dependencyCheck additionalArguments: '--format HTML --format XML --disableYarnAudit', odcInstallation:'Default'
 			}
